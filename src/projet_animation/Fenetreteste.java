@@ -190,7 +190,7 @@ public class Fenetreteste extends JFrame {
 		JSplitPane cd = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT , panelCentre, paneldroit); 
 		cd.setDividerLocation(0.3) ;
 		cd.setOneTouchExpandable(true);
-		cd.setResizeWeight(.8d);
+		cd.setResizeWeight(.7d);
 		cd.setDividerLocation(500);
 		JSplitPane gc = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT ) ;
 		
@@ -198,13 +198,13 @@ public class Fenetreteste extends JFrame {
 		gc.add(cd) ;
 		gc.setResizeWeight(.2d);
 		gc.setOneTouchExpandable(true);
-		gc.setDividerLocation(200);
+		gc.setDividerLocation(100);
 		
 		JSplitPane hb = new JSplitPane(JSplitPane.VERTICAL_SPLIT ,gc , panelbas); 
-		gc.setResizeWeight(.2d);
+		//gc.setResizeWeight(.5d);
 		hb.setResizeWeight(.9d);
 		add(hb);
-		
+		setMinimumSize(new Dimension( 700 , 400));
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
 		setVisible(true) ;
