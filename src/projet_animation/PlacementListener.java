@@ -20,7 +20,7 @@ public class PlacementListener extends MouseAdapter{
 		if(cpt==0) figure = new ObjectGeo(zone.getNbFigure(),type);
 		
 		if(type=="segment"){			
-			figure.addPoint(e.getX(), e.getY());
+			figure.ajouterPoint(e.getX(), e.getY());
 			if(cpt<2){
 				cpt++;
 			}
@@ -30,7 +30,7 @@ public class PlacementListener extends MouseAdapter{
 			}
 			
 		}else if(type=="triangleEq"){
-			figure.addPoint(e.getX(), e.getY());
+			figure.ajouterPoint(e.getX(), e.getY());
 			if(cpt<3){
 				cpt++;
 			}
@@ -42,18 +42,18 @@ public class PlacementListener extends MouseAdapter{
 				yc2= (int) (((figure.getCy(0) + figure.getCy(1))/2) + (Math.sqrt(3)/2)*(-(figure.getCx(1)-figure.getCx(0))));
 				
 				if(Math.sqrt( Math.pow((e.getX()-xc1),2) + Math.pow((e.getY()-yc1),2)) <= Math.sqrt( Math.pow((e.getX()-xc2),2) + Math.pow((e.getY()-yc2),2))     )
-					figure.addPoint(xc1, yc1);
-				else figure.addPoint(xc2, yc2);
+					figure.ajouterPoint(xc1, yc1);
+				else figure.ajouterPoint(xc2, yc2);
 				zone.ajouterFigure(figure);
 				zone.desactiverListener();
 			}
 			
 		}else if(type=="carre"){
 			figure.setCenter(e.getX(), e.getY());
-			figure.addPoint(e.getX()-50, e.getY()-50);
-			figure.addPoint(e.getX()+50, e.getY()-50);
-			figure.addPoint(e.getX()+50, e.getY()+50);
-			figure.addPoint(e.getX()-50, e.getY()+50);
+			figure.ajouterPoint(e.getX()-50, e.getY()-50);
+			figure.ajouterPoint(e.getX()+50, e.getY()-50);
+			figure.ajouterPoint(e.getX()+50, e.getY()+50);
+			figure.ajouterPoint(e.getX()-50, e.getY()+50);
 			zone.ajouterFigure(figure);
 			zone.desactiverListener();
 			
@@ -63,17 +63,17 @@ public class PlacementListener extends MouseAdapter{
 				cpt++;
 			}
 			else if(cpt==1){
-				figure.addPoint(e.getX(), e.getY());
+				figure.ajouterPoint(e.getX(), e.getY());
 				zone.ajouterFigure(figure);
 				zone.desactiverListener();
 			}
 			
 		}else if(type=="losange"){
 			figure.setCenter(e.getX(), e.getY());
-			figure.addPoint(e.getX(), e.getY()-25);
-			figure.addPoint(e.getX()+50, e.getY());
-			figure.addPoint(e.getX(), e.getY()+25);
-			figure.addPoint(e.getX()-50, e.getY());
+			figure.ajouterPoint(e.getX(), e.getY()-25);
+			figure.ajouterPoint(e.getX()+50, e.getY());
+			figure.ajouterPoint(e.getX(), e.getY()+25);
+			figure.ajouterPoint(e.getX()-50, e.getY());
 			zone.ajouterFigure(figure);
 			zone.desactiverListener();
 			

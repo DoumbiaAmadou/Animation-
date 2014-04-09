@@ -13,11 +13,16 @@ import javax.swing.JTabbedPane;
 
 public class Tabbedpanel  extends JTabbedPane{
 	
-	Toile t = new Toile(); 
-	public Tabbedpanel() {
+	private ObjectFrame t ;
+	public Tabbedpanel(Fenetreteste fenetreteste) {
 		// TODO Auto-generated constructor stub
+		t = new ObjectFrame(); 
+		fenetreteste.objf= t ; 
 		add("animation1",t);
-
+	}
+	
+	public ObjectFrame getObjetFrame() {
+		return t ; 
 	}
 
 }

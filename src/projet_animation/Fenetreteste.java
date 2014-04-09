@@ -35,13 +35,13 @@ public class Fenetreteste extends JFrame {
 	TreeModel arbre;
 	protected JTree Jarbre;
 	
+	 ObjectFrame objf ; 
 	private JTabbedPane panelCentre ;
 	private JPanel panelbas ;
 	private JPanel panelgauche ;
 	private JPanel panelhaut ;
 	private JPanel paneldroit;
 	private JPanel p1;
-	
 	
 	// les actions 
 	Action nouveau ;
@@ -52,12 +52,12 @@ public class Fenetreteste extends JFrame {
 	
 	// les ressources 
 	private ResourceBundle rz; 
-
+	private MonEcouteurAction typeListener ; 
+	
 	// contructucteurs 
 	
 	public Fenetreteste(){
 		// TODO Auto-generated constructor stub
-	
 		Locale local= new Locale("fr_FR"); 
 		 rz = ResourceBundle
 				.getBundle("projet_animation.messages" ,local);
@@ -66,7 +66,7 @@ public class Fenetreteste extends JFrame {
 		/**le menu du systeme
 		 *  menu 
 		 */
-	
+		typeListener = new MonEcouteurAction(rz); 
 		JMenuBar barPrincipale = new JMenuBar();
 		JMenu fichier = new JMenu(rz.getString("Fichier"));  //$NON-NLS-1$
 		JMenu edit = new JMenu(rz.getString("edition")); 	 //$NON-NLS-1$
@@ -137,6 +137,15 @@ public class Fenetreteste extends JFrame {
 			JButton b7 = new JButton("etoile") ; 
 			JButton b8 = new JButton("polygone") ; 
 			
+			b1.addActionListener(this.typeListener); 
+			b2.addActionListener(this.typeListener); 
+			b3.addActionListener(this.typeListener); 
+			b4.addActionListener(this.typeListener); 
+			b5.addActionListener(this.typeListener); 
+			b6.addActionListener(this.typeListener); 
+			b7.addActionListener(this.typeListener); 
+			b8.addActionListener(this.typeListener); 
+			
 			paneldoithaut.add(b1);
 			paneldoithaut.add(b2);
 			paneldoithaut.add(b3);
@@ -146,6 +155,7 @@ public class Fenetreteste extends JFrame {
 			paneldoithaut.add(b7);
 			paneldoithaut.add(b8);
 			
+					
 			b1.setPreferredSize(new Dimension(90, 20));
 			b2.setPreferredSize(new Dimension(90, 20));
 			b3.setPreferredSize(new Dimension(90, 20));
@@ -184,7 +194,7 @@ public class Fenetreteste extends JFrame {
 		 
 		 
 		//panel central 
-		 panelCentre = new Tabbedpanel();
+		 panelCentre = new Tabbedpanel( this);
 	
 		
 		JSplitPane cd = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT , panelCentre, paneldroit); 
@@ -301,20 +311,12 @@ public class Fenetreteste extends JFrame {
 			
 			 String stringCmd = e.getActionCommand();
 			 	System.out.println(stringCmd);
-			int i;
+		
 			
-			i = Integer.parseInt( ecran.getText()) ; 
-			if(rz.getString(Messages.getString("Fenetreteste.14")).equals(stringCmd)) //$NON-NLS-1$
-				System.exit(0);
-			else
-			if(stringCmd.equals(Messages.getString("Fenetreteste.15"))){ //$NON-NLS-1$
-//				valeur =Integer.getInteger(ecran.getText()) ; 
-//				ecran.setText("0"); 
-				JButton b = 	new JButton(Messages.getString("Fenetreteste.16")+valeur) ; //$NON-NLS-1$
-				 p1.add(b) ;
-				 p1.revalidate() ; 
-				 p1.repaint() ; 
-				 valeur++;
+			
+		if(stringCmd.equals("segment")){ //$NON-NLS-1$
+		objf.ajouterFigure("segment");
+			
 		}
 		else 
 			if(stringCmd.equals(Messages.getString("Fenetreteste.17"))) //$NON-NLS-1$
@@ -322,8 +324,9 @@ public class Fenetreteste extends JFrame {
 					ecran.setText(Messages.getString("Fenetreteste.18")+valeur); //$NON-NLS-1$
 				}
 			else
-				{JOptionPane.showMessageDialog(null, Messages.getString("Fenetreteste.19")+i+ Messages.getString("Fenetreteste.20"));  //$NON-NLS-1$ //$NON-NLS-2$
-				ecran.setText(Messages.getString("Fenetreteste.21")+i+stringCmd); //$NON-NLS-1$
+				{
+					//JOptionPane.showMessageDialog(null, Messages.getString("Fenetreteste.19")+i+ Messages.getString("Fenetreteste.20"));  //$NON-NLS-1$ //$NON-NLS-2$
+					//ecran.setText(Messages.getString("Fenetreteste.21")+i+stringCmd); //$NON-NLS-1$
 				}
 		}
 	} 

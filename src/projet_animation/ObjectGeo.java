@@ -50,7 +50,7 @@ public class ObjectGeo {
 			return color;
 	}
 	
-	public void addPoint(int x, int y){
+	public void ajouterPoint(int x, int y){
 		figure.addPoint(x, y);
 	}
 	
