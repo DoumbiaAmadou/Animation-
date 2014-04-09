@@ -21,12 +21,13 @@ public class PlacementListener extends MouseAdapter{
 		
 		if(type=="segment"){			
 			figure.ajouterPoint(e.getX(), e.getY());
-			if(cpt<2){
+			if(cpt<1){
 				cpt++;
 			}
-			else if(cpt==2){
+			else if(cpt==1){
 				zone.ajouterFigure(figure);
 				zone.desactiverListener();
+				
 			}
 			
 		}else if(type=="triangleEq"){

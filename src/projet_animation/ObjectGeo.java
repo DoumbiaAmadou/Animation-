@@ -9,6 +9,7 @@ public class ObjectGeo {
 	private Polygon figure;
 	private Point2D centre;
 	private Color color;
+	
 	//private float time;
 	private String type;
 	
@@ -16,6 +17,7 @@ public class ObjectGeo {
 		this.id = id;
 		this.type=type;
 		//time=0;
+		figure = new Polygon(); 
 	}
 	
 	public int getId(){
@@ -51,11 +53,9 @@ public class ObjectGeo {
 	}
 	
 	public void ajouterPoint(int x, int y){
+	//	System.out.println(""+x+" "+y );
 		figure.addPoint(x, y);
 	}
-	
-	
-	
 	public void deplacer(int x, int y){
 		setCenter((int)centre.getX()+x, (int)centre.getY()-y);
 		for(int i=0; i<figure.npoints;i++){

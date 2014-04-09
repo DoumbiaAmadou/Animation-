@@ -93,8 +93,9 @@ public class ObjectFrame extends JPanel{
 	
 	protected void paintComponent(Graphics g){
 		setColor();
-		bg.fillRect(0,0,900,900);
-		
+	
+		bg.fillRect(0,0,getMaximumSize().width,getMaximumSize().width);
+			bg.setColor(Color.green);
 		for(int i=0; i<figures.size(); i++){
 			placerFigure(i);	
 		}
@@ -112,7 +113,7 @@ public class ObjectFrame extends JPanel{
 	
 	public void ajouterFigure(String type){
 		if(listenerActif==true) desactiverListener();
-		cListener = new PlacementListener(this, type);
+		this.cListener = new PlacementListener(this, type);
 		activerListener();
 	}
 	
@@ -122,7 +123,7 @@ public class ObjectFrame extends JPanel{
 	}
 	
 	public void activerListener(){
-		addMouseListener(cListener);
+		this.addMouseListener(cListener);
 		listenerActif = true;
 	}
 	
