@@ -3,11 +3,12 @@ package projet_animation;
 import java.awt.Color;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 public class ObjectGeo {
 	private int id;
 	private Polygon figure;
-	private Point2D centre;
+	private int xc, yc;
 	private Color color;
 	
 	//private float time;
@@ -17,7 +18,8 @@ public class ObjectGeo {
 		this.id = id;
 		this.type=type;
 		//time=0;
-		figure = new Polygon(); 
+		figure = new Polygon();
+		xc = yc = 0;
 	}
 	
 	public int getId(){
@@ -33,12 +35,17 @@ public class ObjectGeo {
 	}
 	
 	public void setCenter(int x, int y){
-		centre.setLocation(x, y);
+		xc = x;
+		yc = y;
 	}
 	
-	public Point2D getCenter(){
-			return centre;
+	public int getXCenter(){
+			return xc;
 	}
+	
+	public int getYCenter(){
+		return yc;
+}
 	
 	public String getType(){
 		return type;
@@ -57,7 +64,7 @@ public class ObjectGeo {
 		figure.addPoint(x, y);
 	}
 	public void deplacer(int x, int y){
-		setCenter((int)centre.getX()+x, (int)centre.getY()-y);
+		setCenter(xc+x, yc-y);
 		for(int i=0; i<figure.npoints;i++){
 			figure.xpoints[i]+=x;
 			figure.ypoints[i]-=y;

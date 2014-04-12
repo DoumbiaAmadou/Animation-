@@ -262,7 +262,7 @@ public class Fenetreteste extends JFrame {
 	 * @author Doumbia
 	 * une classe interne de render comboibox
 	 */
-	class MonRender extends JLabel implements ListCellRenderer<Object>{
+	class MonRender extends JLabel implements ListCellRenderer{
 	protected DefaultListCellRenderer defaultRenderer = new DefaultListCellRenderer();	
 	public MonRender () {
 			//setOpaque(true);

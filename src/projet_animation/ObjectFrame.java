@@ -84,18 +84,21 @@ public class ObjectFrame extends JPanel{
 			bg.drawPolygon(figures.get(i).getPolygon());
 		}
 		else {
-			double vectX = figures.get(i).getCx(0) - figures.get(i).getCenter().getX();
-			double vectY = figures.get(i).getCy(0) - figures.get(i).getCenter().getY();
+			double vectX = figures.get(i).getCx(0) - figures.get(i).getXCenter();
+			double vectY = figures.get(i).getCy(0) - figures.get(i).getYCenter();
 			double rayon = Math.sqrt(vectX*vectX + vectY*vectY);
-			bg.drawArc((int)figures.get(i).getCenter().getX(), (int)figures.get(i).getCenter().getY(), (int)bs.getLineWidth(), (int)rayon, 0, 360);
+			bg.fillOval((int)figures.get(i).getXCenter()-(int)rayon, (int)figures.get(i).getYCenter()-(int)rayon, (int)rayon*2, (int)rayon*2);
+			setColor(c);
+			bg.fillOval((int)figures.get(i).getXCenter()-(int)rayon+(int)bs.getLineWidth(), (int)figures.get(i).getYCenter()-(int)rayon+(int)bs.getLineWidth(), (int)(rayon-bs.getLineWidth())*2, (int)(rayon-bs.getLineWidth())*2);
+			setColor(Color.black);
 		}
 	}
 	
 	protected void paintComponent(Graphics g){
 		setColor();
-	
-		bg.fillRect(0,0,getMaximumSize().width,getMaximumSize().width);
-			bg.setColor(Color.green);
+		bg.fillRect(0,0,getMaximumSize().width,getMaximumSize().height);
+		setColor(Color.black);
+		
 		for(int i=0; i<figures.size(); i++){
 			placerFigure(i);	
 		}
@@ -113,7 +116,7 @@ public class ObjectFrame extends JPanel{
 	
 	public void ajouterFigure(String type){
 		if(listenerActif==true) desactiverListener();
-		this.cListener = new PlacementListener(this, type);
+		cListener = new PlacementListener(this, type);
 		activerListener();
 	}
 	
@@ -123,7 +126,7 @@ public class ObjectFrame extends JPanel{
 	}
 	
 	public void activerListener(){
-		this.addMouseListener(cListener);
+		addMouseListener(cListener);
 		listenerActif = true;
 	}
 	
