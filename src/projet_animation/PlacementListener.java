@@ -1,13 +1,19 @@
 package projet_animation;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Iterator;
+
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 public class PlacementListener extends MouseAdapter{
 	private ObjectFrame zone;
 	private ObjectGeo figure;
 	private String type;
 	private int cpt;
+	
 	
 	public PlacementListener(ObjectFrame zone, String type){
 		this.zone = zone;
@@ -16,9 +22,11 @@ public class PlacementListener extends MouseAdapter{
 	}
 	
 	public void mousePressed(MouseEvent e){
+	
+		
 		
 		if(cpt==0) figure = new ObjectGeo(zone.getNbFigure(),type);
-		
+		figure.setColor(Color.black);
 		if(type=="segment"){			
 			figure.ajouterPoint(e.getX(), e.getY());
 			if(cpt<1){
@@ -96,5 +104,9 @@ public class PlacementListener extends MouseAdapter{
 			
 			
 		}
+	
+	
 	}
+
+
 }

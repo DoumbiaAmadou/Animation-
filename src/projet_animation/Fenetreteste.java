@@ -314,20 +314,10 @@ public class Fenetreteste extends JFrame {
 		
 			
 			
-		if(stringCmd.equals("segment")){ //$NON-NLS-1$
-		objf.ajouterFigure("segment");
+		
+		objf.ajouterFigure(stringCmd);
 			
-		}
-		else 
-			if(stringCmd.equals(Messages.getString("Fenetreteste.17"))) //$NON-NLS-1$
-				{			valeur =+Integer.getInteger(ecran.getText()) ; 
-					ecran.setText(Messages.getString("Fenetreteste.18")+valeur); //$NON-NLS-1$
-				}
-			else
-				{
-					//JOptionPane.showMessageDialog(null, Messages.getString("Fenetreteste.19")+i+ Messages.getString("Fenetreteste.20"));  //$NON-NLS-1$ //$NON-NLS-2$
-					//ecran.setText(Messages.getString("Fenetreteste.21")+i+stringCmd); //$NON-NLS-1$
-				}
+	
 		}
 	} 
 	class MonActionItems extends AbstractAction {
