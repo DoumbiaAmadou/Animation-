@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
@@ -111,10 +112,8 @@ public class ObjectFrame extends JPanel{
 			double vectX = figures.get(i).getCx(0) - figures.get(i).getXCenter();
 			double vectY = figures.get(i).getCy(0) - figures.get(i).getYCenter();
 			double rayon = Math.sqrt(vectX*vectX + vectY*vectY);
-			bg.fillOval((int)figures.get(i).getXCenter()-(int)rayon, (int)figures.get(i).getYCenter()-(int)rayon, (int)rayon*2, (int)rayon*2);
-			setColor(c);
-			bg.fillOval((int)figures.get(i).getXCenter()-(int)rayon+(int)bs.getLineWidth(), (int)figures.get(i).getYCenter()-(int)rayon+(int)bs.getLineWidth(), (int)(rayon-bs.getLineWidth())*2, (int)(rayon-bs.getLineWidth())*2);
-			setColor(Color.black);
+			
+			bg.draw(new Ellipse2D.Double((int)figures.get(i).getXCenter()-(int)rayon, (int)figures.get(i).getYCenter()-(int)rayon,rayon*2,rayon*2));
 		}
 	}
 	

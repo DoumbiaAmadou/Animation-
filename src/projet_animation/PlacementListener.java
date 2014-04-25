@@ -1,19 +1,13 @@
 package projet_animation;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Iterator;
-
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 
 public class PlacementListener extends MouseAdapter{
 	private ObjectFrame zone;
 	private ObjectGeo figure;
 	private String type;
 	private int cpt;
-	
 	
 	public PlacementListener(ObjectFrame zone, String type){
 		this.zone = zone;
@@ -22,11 +16,9 @@ public class PlacementListener extends MouseAdapter{
 	}
 	
 	public void mousePressed(MouseEvent e){
-	
-		
 		
 		if(cpt==0) figure = new ObjectGeo(zone.getNbFigure(),type);
-		figure.setColor(Color.black);
+		
 		if(type=="segment"){			
 			figure.ajouterPoint(e.getX(), e.getY());
 			if(cpt<1){
@@ -95,18 +87,32 @@ public class PlacementListener extends MouseAdapter{
 			zone.desactiverListener();
 			
 		}else if(type=="trapeze"){
-			
+				figure.setCenter(e.getX(), e.getY());
+				figure.ajouterPoint(e.getX()-20, e.getY()-20);
+				figure.ajouterPoint(e.getX()+20, e.getY()-20);
+				figure.ajouterPoint(e.getX()+50, e.getY()+20);
+				figure.ajouterPoint(e.getX()-50, e.getY()+20);
+
+				zone.ajouterFigure(figure);
+				zone.desactiverListener();			
 			
 		}else if(type=="etoile"){
 			
 			
-		}else if(type=="polygone"){
-			
-			
+		}else if(type=="parallelogramme"){
+			if(cpt<2){
+				cpt++;
+				figure.ajouterPoint(e.getX(), e.getY());
+				}
+			else if(cpt==2){
+				figure.ajouterPoint(e.getX(), e.getY());
+				int vx,vy;
+				vx = figure.getCx(2)-figure.getCx(1);
+				vy = figure.getCy(2)-figure.getCy(1);
+				figure.ajouterPoint(figure.getCx(0)+vx, figure.getCy(0)+vy);
+				zone.ajouterFigure(figure);
+				zone.desactiverListener();
+			}
 		}
-	
-	
 	}
-
-
 }
