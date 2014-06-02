@@ -222,8 +222,8 @@ public class ObjectFrame extends JPanel{
 							x , y )<30 ||
 					(
 						ob.getType().equals("cercle")&&
-						Math.abs(ob.getXCenter() -x)<Math.abs(ob.getFigureC().getX(0)-ob.getXCenter()) &&
-						Math.abs(ob.getYCenter() -y)<Math.abs(ob.getFigureC().getY(0)-ob.getYCenter())	
+						Math.abs(ob.getXCenterCourant() -x)<Math.abs(ob.getFigureC().getX(0)-ob.getXCenterCourant()) &&
+						Math.abs(ob.getYCenterCourant() -y)<Math.abs(ob.getFigureC().getY(0)-ob.getYCenterCourant())	
 
 					)
 					){
