@@ -15,14 +15,14 @@ public class Toile  extends JPanel {
 	int y ; 
 	int width , height ; 
 	public Toile(){
+		//	setMinimumSize(new Dimension(50 , 50));
+		
+		bi= new BufferedImage(1400, 1400, BufferedImage.TYPE_4BYTE_ABGR);
+		gd = bi.createGraphics(); 
+		addMouseListener(new SouirisEcouteur());
+		addMouseMotionListener(new SouirisEcouteur());
+		gd.setBackground(Color.black);
 	
-
-//	setMinimumSize(new Dimension(50 , 50));
-	bi= new BufferedImage(1400, 1400, BufferedImage.TYPE_4BYTE_ABGR);
-	gd = bi.createGraphics(); 
-	addMouseListener(new SouirisEcouteur());
-	addMouseMotionListener(new SouirisEcouteur());
-	gd.setBackground(Color.black);
 	}
 	@Override
 	protected void paintComponent (Graphics g){
